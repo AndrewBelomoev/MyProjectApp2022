@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myprojectapp.R
 import com.example.myprojectapp.adapter.ArticlesListAdapter
 import com.example.myprojectapp.databinding.FragmentSavedNewsBinding
 import com.example.myprojectapp.extentions.SwipeToDeleteCallback
@@ -21,14 +20,14 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SavedNewsFragment : Fragment() {
 
     private var _binding: FragmentSavedNewsBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val viewModel by inject<SavedNewsViewModel>()
+    private val viewModel by viewModel<SavedNewsViewModel>()
 
     private val adapter by lazy {
         ArticlesListAdapter(
@@ -67,7 +66,7 @@ class SavedNewsFragment : Fragment() {
                     binding.progressCircular.isVisible = lce == LceState.Loading
                     when (lce) {
                         is LceState.Content -> {
-                            lce.articles.collect {
+                            lce.data.collect {
                                 adapter.submitList(it)
                             }
                         }

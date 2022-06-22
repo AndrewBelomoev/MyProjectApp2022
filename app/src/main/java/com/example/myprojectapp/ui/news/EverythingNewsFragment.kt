@@ -24,13 +24,13 @@ import com.example.myprojectapp.ui.home.HomeFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EverythingNewsFragment : Fragment() {
     private var _binding: FragmentEverythingNewsBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val viewModel by inject<EverythingNewsViewModel>()
+    private val viewModel by viewModel<EverythingNewsViewModel>()
 
     private val adapter by lazy {
         ArticlesListAdapter(
@@ -98,7 +98,7 @@ class EverythingNewsFragment : Fragment() {
                     binding.progressCircular.isVisible = lceState == LceState.Loading
                     when (lceState) {
                         is LceState.Content -> {
-                            adapter.submitList(lceState.articles)
+                            adapter.submitList(lceState.data)
                         }
                         is LceState.Error -> {
                             Snackbar.make(

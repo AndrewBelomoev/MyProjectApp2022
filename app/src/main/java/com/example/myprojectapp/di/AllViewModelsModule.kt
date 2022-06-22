@@ -6,6 +6,7 @@ import com.example.myprojectapp.ui.news.SavedNewsViewModel
 import com.example.myprojectapp.ui.news.TopNewsViewModel
 import com.example.myprojectapp.ui.settings.language.LanguageViewModel
 import com.example.myprojectapp.ui.settings.nightmode.NightModeViewModel
+import com.example.myprojectapp.ui.weather.WeatherViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -16,5 +17,6 @@ val allViewModelsModule = module {
     viewModelOf(::EverythingNewsViewModel)
     viewModelOf(::NightModeViewModel)
     viewModelOf(::LanguageViewModel)
+    viewModelOf(::WeatherViewModel)
 
 }

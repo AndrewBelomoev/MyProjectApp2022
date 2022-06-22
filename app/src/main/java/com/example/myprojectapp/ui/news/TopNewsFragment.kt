@@ -1,6 +1,5 @@
 package com.example.myprojectapp.ui.news
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,13 +23,13 @@ import com.example.myprojectapp.ui.home.HomeFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TopNewsFragment : Fragment() {
     private var _binding: FragmentTopNewsBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val viewModel by inject<TopNewsViewModel>()
+    private val viewModel by viewModel<TopNewsViewModel>()
 
     private val adapter by lazy {
         ArticlesListAdapter(
@@ -87,7 +86,7 @@ class TopNewsFragment : Fragment() {
                     binding.progressCircular.isVisible = lceState == LceState.Loading
                     when (lceState) {
                         is LceState.Content -> {
-                            adapter.submitList(lceState.articles)
+                            adapter.submitList(lceState.data)
                         }
                         is LceState.Error -> {
                             Snackbar.make(

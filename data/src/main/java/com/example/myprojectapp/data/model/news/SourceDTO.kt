@@ -1,4 +1,4 @@
-package com.example.myprojectapp.data.model
+package com.example.myprojectapp.data.model.news
 
 data class SourceDTO(
     val id: String? = null,

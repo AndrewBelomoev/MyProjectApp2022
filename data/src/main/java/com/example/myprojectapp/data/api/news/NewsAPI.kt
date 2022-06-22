@@ -2,7 +2,7 @@ package com.example.myprojectapp.data.api.news
 
 import com.example.myprojectapp.data.constants.Constants.Companion.EVERYTHING_REQUEST
 import com.example.myprojectapp.data.constants.Constants.Companion.TOP_HEADLINES_REQUEST
-import com.example.myprojectapp.data.model.NewsResponseDTO
+import com.example.myprojectapp.data.model.news.NewsResponseDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,7 +15,7 @@ interface NewsAPI {
         @Query("pageSize")
         pageSize: Int = MAXIMUM_PAGE_SIZE,  // The number of results to return per page (request). 20 is the default, 100 is the maximum.
         @Query("page")
-        page: Int,
+        page: Int
     ): NewsResponseDTO
 
     @GET(EVERYTHING_REQUEST)

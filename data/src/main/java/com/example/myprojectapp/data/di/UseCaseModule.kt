@@ -12,4 +12,5 @@ val useCaseModule = module {
     factoryOf(::SaveNewsToDatabaseUseCase)
     factoryOf(::SubscribeToChangesDatabaseUseCase)
     factoryOf(::DeleteNewsFromDatabaseUseCase)
+    factoryOf(::GetCurrentWeatherUseCase)
 }
